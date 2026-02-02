@@ -69,3 +69,133 @@ body {
 .stat-number-accent {
   color: var(--accent);
 }
+.carousel-item img {
+  height: 500px;          
+  object-fit: cover;     
+}
+
+/* ===== LonoSpace Theme Enhancements ===== */
+
+/* Section backgrounds */
+.section-light {
+  background-color: var(--bg-main);
+}
+
+.section-accent {
+  background-color: rgba(143, 169, 155, 0.15); /* sage tint */
+}
+
+/* Headings */
+.section-title {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* Carousel caption enhancement */
+.carousel-caption {
+  background: rgba(62, 62, 62, 0.55);
+  border-radius: 12px;
+}
+
+/* Stats cards */
+.stat-card {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-label {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* Why section cards */
+.why-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+}
+
+/* Page background */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+}
+
+/* ===== Section backgrounds ===== */
+.section-accent {
+  background-color: rgba(143, 169, 155, 0.22); /* sage visible */
+}
+
+.section-light {
+  background-color: var(--bg-main);
+}
+
+/* ===== Cards ===== */
+.card {
+  border-radius: 18px;
+}
+
+.stat-card {
+  background-color: #ffffff;
+}
+
+/* ===== Stat numbers ===== */
+.stat-number-primary {
+  color: var(--primary);
+}
+
+.stat-number-secondary {
+  color: var(--secondary);
+}
+
+.stat-number-accent {
+  color: var(--accent);
+}
+
+/* ===== Carousel caption ===== */
+.carousel-caption {
+  background: rgba(62, 62, 62, 0.55);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+/* ===== Footer ===== */
+.footer-section {
+  background-color: var(--primary);
+  color: var(--text-light);
+}
+
+.footer-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.footer-links li:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}

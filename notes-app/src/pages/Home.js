@@ -1,17 +1,20 @@
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Home() {
+    
   return (
     <>
       <Navbar />
 
-      {/* ===== Carousel Section ===== */}
+      {/* ===== HERO / CAROUSEL ===== */}
       <div
         id="lonospaceCarousel"
         className="carousel slide"
         data-bs-ride="carousel"
       >
         <div className="carousel-indicators">
+            
           <button
             type="button"
             data-bs-target="#lonospaceCarousel"
@@ -33,98 +36,104 @@ function Home() {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              src="https://via.placeholder.com/1200x400?text=Organize+Your+Notes"
+              src="https://i.pinimg.com/736x/c4/21/ff/c421ff0fa2d163b0464b91c131369d2a.jpg"
               className="d-block w-100"
-              alt="Notes"
+              alt="Organize Notes"
+              
             />
             <div className="carousel-caption d-none d-md-block">
-              <h5>Organize Your Notes</h5>
-              <p>Keep all your learning in one calm space.</p>
+              <h3>LonoSpace</h3>
+              <p>Your own space to learn and grow.</p>
             </div>
           </div>
 
           <div className="carousel-item">
             <img
-              src="https://via.placeholder.com/1200x400?text=Learn+Smarter"
+              src="https://thedailygraceco.com/cdn/shop/articles/PodcastEp311_Header.jpg?v=1730823326&width=1920"
               className="d-block w-100"
-              alt="Learn"
+              alt="Smart Learning"
             />
             <div className="carousel-caption d-none d-md-block">
-              <h5>Learn Smarter</h5>
-              <p>Short notes, PDFs, and structured content.</p>
+              <h3>Smart Learning</h3>
+              <p>Access notes and short notes anytime.</p>
             </div>
           </div>
 
           <div className="carousel-item">
             <img
-              src="https://via.placeholder.com/1200x400?text=Grow+With+LonoSpace"
+              src="https://i.pinimg.com/1200x/00/77/cb/0077cbd5b342e791060befe976f36d71.jpg"
               className="d-block w-100"
               alt="Grow"
             />
             <div className="carousel-caption d-none d-md-block">
-              <h5>Grow With LonoSpace</h5>
-              <p>Your personal learning companion.</p>
+              <h3>Grow Every Day</h3>
+              <p>Become interview ready with interview prep notes</p>
             </div>
           </div>
         </div>
 
         <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#lonospaceCarousel"
-          data-bs-slide="prev"
-        >
-          <span className="carousel-control-prev-icon"></span>
-        </button>
+            className="carousel-control-prev"
+            type="button"
+            data-bs-target="#lonospaceCarousel"
+            data-bs-slide="prev"
+            >
+            <span className="carousel-control-prev-icon"></span>
+            </button>
 
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#lonospaceCarousel"
-          data-bs-slide="next"
-        >
-          <span className="carousel-control-next-icon"></span>
-        </button>
+            <button
+            className="carousel-control-next"
+            type="button"
+            data-bs-target="#lonospaceCarousel"
+            data-bs-slide="next"
+            >
+            <span className="carousel-control-next-icon"></span>
+            </button>
+
       </div>
 
-      {/* ===== Stats Section ===== */}
-      <div className="container my-5">
+      {/* ===== STATS SECTION ===== */}
+     <div className="section-accent py-5">
+  <div className="container">
         <div className="row text-center">
           <div className="col-md-4 mb-4">
-            <div className="card shadow-sm h-100">
+            <div className="card stat-card shadow-sm h-100">
               <div className="card-body">
-                <h2 className="text-primary">120+</h2>
-                <p className="card-text">Detailed Notes</p>
+                <h2 className="stat-number-primary">120+</h2>
+                <p>Detailed Notes</p>
               </div>
             </div>
           </div>
 
           <div className="col-md-4 mb-4">
-            <div className="card shadow-sm h-100">
+            <div className="card stat-card shadow-sm h-100">
               <div className="card-body">
-                <h2 className="text-success">300+</h2>
-                <p className="card-text">Short Notes</p>
+                <h2 className="stat-number-secondary">300+</h2>
+                <p>Short Notes</p>
               </div>
             </div>
           </div>
 
           <div className="col-md-4 mb-4">
-            <div className="card shadow-sm h-100">
+            <div className="card stat-card shadow-sm h-100">
               <div className="card-body">
-                <h2 className="text-warning">1,000+</h2>
-                <p className="card-text">Active Learners</p>
+                <h2 className="stat-number-accent">1,000+</h2>
+                <p>Active Learners</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      </div>
 
-      {/* ===== Why LonoSpace Section ===== */}
-      <div className="container my-5">
+      {/* ===== WHY LONOSPACE ===== */}
+      <div className="section-light py-5">
+  <div className="container">
+
         <div className="text-center mb-4">
           <h2>Why LonoSpace?</h2>
           <p className="text-muted">
-            Built for learners who love clarity, calm, and consistency.
+            Designed for learners who love simplicity and focus.
           </p>
         </div>
 
@@ -132,9 +141,9 @@ function Home() {
           <div className="col-md-4 mb-3">
             <div className="card h-100 border-0 shadow-sm">
               <div className="card-body">
-                <h5>📘 Structured Learning</h5>
+                <h5>📘 Organized Content</h5>
                 <p>
-                  Well-organized notes and short notes to save your time.
+                  All your notes and short notes structured clearly.
                 </p>
               </div>
             </div>
@@ -145,7 +154,7 @@ function Home() {
               <div className="card-body">
                 <h5>⚡ Quick Access</h5>
                 <p>
-                  Find exactly what you need, when you need it.
+                  Find what you need without distractions.
                 </p>
               </div>
             </div>
@@ -154,15 +163,18 @@ function Home() {
           <div className="col-md-4 mb-3">
             <div className="card h-100 border-0 shadow-sm">
               <div className="card-body">
-                <h5>🌱 Grow Daily</h5>
+                <h5>🌱 Learn Consistently</h5>
                 <p>
-                  Learn a little every day and track your progress.
+                  Build habits and grow one note at a time.
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      </div>
+      <Footer />
+
     </>
   );
 }
