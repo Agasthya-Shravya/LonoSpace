@@ -199,3 +199,25 @@ body {
   font-size: 0.85rem;
   opacity: 0.8;
 }
+/* ===== Wiggle animation for Why cards ===== */
+@keyframes wiggle {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(1.5deg); }
+  50%  { transform: rotate(-1.5deg); }
+  75%  { transform: rotate(1deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ===== Why cards: shadow + wiggle ===== */
+.why-card {
+  border-radius: 18px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.why-card:hover {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+  animation: wiggle 0.8s ease-in-out;
+}
+

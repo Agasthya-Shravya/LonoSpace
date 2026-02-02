@@ -6,8 +6,6 @@ function Home() {
   return (
     <>
       <Navbar />
-
-      {/* ===== HERO / CAROUSEL ===== */}
       <div
         id="lonospaceCarousel"
         className="carousel slide"
@@ -92,7 +90,6 @@ function Home() {
 
       </div>
 
-      {/* ===== STATS SECTION ===== */}
      <div className="section-accent py-5">
   <div className="container">
         <div className="row text-center">
@@ -126,7 +123,7 @@ function Home() {
       </div>
       </div>
 
-      {/* ===== WHY LONOSPACE ===== */}
+
       <div className="section-light py-5">
   <div className="container">
 
@@ -139,9 +136,9 @@ function Home() {
 
         <div className="row">
           <div className="col-md-4 mb-3">
-            <div className="card h-100 border-0 shadow-sm">
+            <div className="card h-100 border-0 why-card">
               <div className="card-body">
-                <h5>📘 Organized Content</h5>
+                <h5> Organized Content</h5>
                 <p>
                   All your notes and short notes structured clearly.
                 </p>
@@ -150,9 +147,9 @@ function Home() {
           </div>
 
           <div className="col-md-4 mb-3">
-            <div className="card h-100 border-0 shadow-sm">
+            <div className="card h-100 border-0 why-card">
               <div className="card-body">
-                <h5>⚡ Quick Access</h5>
+                <h5> Quick Access</h5>
                 <p>
                   Find what you need without distractions.
                 </p>
@@ -161,9 +158,9 @@ function Home() {
           </div>
 
           <div className="col-md-4 mb-3">
-            <div className="card h-100 border-0 shadow-sm">
+            <div className="card h-100 border-0 why-card">
               <div className="card-body">
-                <h5>🌱 Learn Consistently</h5>
+                <h5> Learn Consistently</h5>
                 <p>
                   Build habits and grow one note at a time.
                 </p>
