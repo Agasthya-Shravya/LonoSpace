@@ -1,55 +1,39 @@
 const express = require("express");
-const bcrypt = require("bcryptjs");
+const router = express.Router();
 const db = require("../db");
 
-const router = express.Router();
-
-/* ===== SIGNUP ===== */
-router.post("/signup", async (req, res) => {
+router.post("/signup", (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
     return res.status(400).json({ message: "All fields required" });
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  const query =
+  const sql =
     "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
 
-  db.query(query, [name, email, hashedPassword], (err) => {
+  db.query(sql, [name, email, password], (err) => {
     if (err) {
-      if (err.code === "ER_DUP_ENTRY") {
-        return res.status(400).json({ message: "Email already exists" });
-      }
-      return res.status(500).json({ message: "Database error" });
+      return res.status(400).json({ message: "Email already exists" });
     }
-
-    res.status(201).json({ message: "User registered successfully" });
+    res.json({ message: "Signup successful" });
   });
 });
 
-/* ===== LOGIN ===== */
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
-  const query = "SELECT * FROM users WHERE email = ?";
+  const sql =
+    "SELECT id, name, email, role FROM users WHERE email = ? AND password = ?";
 
-  db.query(query, [email], async (err, results) => {
-    if (err || results.length === 0) {
-      return res.status(400).json({ message: "Invalid credentials" });
-    }
-
-    const user = results[0];
-    const isMatch = await bcrypt.compare(password, user.password);
-
-    if (!isMatch) {
-      return res.status(400).json({ message: "Invalid credentials" });
+  db.query(sql, [email, password], (err, result) => {
+    if (err || result.length === 0) {
+      return res.status(401).json({ message: "Invalid credentials" });
     }
 
     res.json({
       message: "Login successful",
-      user: { id: user.id, name: user.name, email: user.email },
+      user: result[0],
     });
   });
 });

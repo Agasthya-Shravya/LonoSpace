@@ -10,11 +10,14 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setSuccess("");
 
     if (!name || !email || !password || !confirmPassword) {
       setError("All fields are required.");
@@ -36,8 +39,34 @@ function Signup() {
       return;
     }
 
-    setError("");
-    console.log("Signup data:", { name, email, password });
+    try {
+      setLoading(true);
+
+      const res = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.message || "Signup failed");
+        return;
+      }
+
+      setSuccess("Account created successfully. Please login.");
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+    } catch (err) {
+      setError("Server error. Try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -62,6 +91,7 @@ function Signup() {
                     <h4 className="mb-4">Sign Up</h4>
 
                     {error && <p className="text-danger">{error}</p>}
+                    {success && <p className="text-success">{success}</p>}
 
                     <form onSubmit={handleSubmit}>
                       <div className="mb-3">
@@ -72,6 +102,7 @@ function Signup() {
                           onChange={(e) => setName(e.target.value)}
                         />
                       </div>
+
                       <div className="mb-3">
                         <label>Email</label>
                         <input
@@ -81,46 +112,46 @@ function Signup() {
                           onChange={(e) => setEmail(e.target.value)}
                         />
                       </div>
+
                       <div className="mb-3 password-wrapper">
-                        
                         <label>Password</label>
                         <input
-                            type={showPassword ? "text" : "password"}
-                            className="form-control"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                          type={showPassword ? "text" : "password"}
+                          className="form-control"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
                         />
                         <span
-                            className="password-eye"
-                            onClick={() => setShowPassword(!showPassword)}
+                          className="password-eye"
+                          onClick={() => setShowPassword(!showPassword)}
                         >
-                            {showPassword ? "🙈" : "👁️"}
+                          {showPassword ? "🙈" : "👁️"}
                         </span>
-                        </div>
+                      </div>
 
                       <div className="mb-3 password-wrapper">
-                    <label>Confirm Password</label>
-                    <input
-                        type={showConfirmPassword ? "text" : "password"}
-                        className="form-control"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                    <span
-                        className="password-eye"
-                        onClick={() =>
-                        setShowConfirmPassword(!showConfirmPassword)
-                        }
-                    >
-                        {showConfirmPassword ? "🙈" : "👁️"}
-                    </span>
-                    </div>
+                        <label>Confirm Password</label>
+                        <input
+                          type={showConfirmPassword ? "text" : "password"}
+                          className="form-control"
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                        <span
+                          className="password-eye"
+                          onClick={() =>
+                            setShowConfirmPassword(!showConfirmPassword)
+                          }
+                        >
+                          {showConfirmPassword ? "🙈" : "👁️"}
+                        </span>
+                      </div>
 
-                    
-
-
-                      <button className="btn btn-primary w-100 mt-3">
-                        Create Account
+                      <button
+                        className="btn btn-primary w-100 mt-3"
+                        disabled={loading}
+                      >
+                        {loading ? "Creating Account..." : "Create Account"}
                       </button>
 
                       <p className="text-center text-muted mt-3">
