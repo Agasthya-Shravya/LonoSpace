@@ -4,9 +4,12 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./admin/AdminDashboard";
 import LearnerDashboard from "./pages/LearnerDashboard";
-
+import Notes from "./admin/Notes";
+import ShortNotes from "./admin/ShortNotes";
+import InterviewPrep from "./admin/InterviewPrep";
+import ManageUsers from "./admin/ManageUsers";
 function App() {
   return (
     <Router>
@@ -18,6 +21,10 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/learner-dashboard" element={<LearnerDashboard />} />
+        <Route path="/admin/notes" element={<Notes />} />
+        <Route path="/admin/short-notes" element={<ShortNotes />} />
+        <Route path="/admin/interview-prep" element={<InterviewPrep />} />
+        <Route path="/admin/users" element={<ManageUsers />} />
 
       </Routes>
     </Router>

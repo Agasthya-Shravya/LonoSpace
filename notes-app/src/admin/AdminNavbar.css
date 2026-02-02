@@ -1,0 +1,10 @@
+:root {
+  /* SAME palette as main navbar */
+  --primary: #6c63ff;
+  --secondary: #f5f6ff;
+  --accent: #e6b4be;
+  --text-dark: #1f2937;
+  --text-light: #ffffff;
+}
+
+/* Navbar base */

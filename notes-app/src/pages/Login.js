@@ -50,9 +50,6 @@ function Login() {
 
       localStorage.setItem("user", JSON.stringify(data.user));
 const role = data.user.role?.trim().toLowerCase();
-console.log("ROLE RAW 👉", data.user.role);
-console.log("ROLE CLEAN 👉", role);
-
 if (role === "admin") {
   navigate("/admin-dashboard");
 } else {
