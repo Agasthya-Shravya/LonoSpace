@@ -15,7 +15,36 @@ body {
 }
 
 /* Navbar */
+/* ===== Navbar Custom Color ===== */
 .navbar {
+  background-color: #8baca6 !important; /* darker sage */
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+}
+
+.navbar-nav .nav-link {
+  color: #fdfefe !important;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #e6efe9 !important;
+}
+
+/* Signup button inside navbar */
+.navbar .btn-primary {
+  background-color: #d6a77a !important; /* accent */
+  border: none;
+  color: #ffffff;
+}
+
+.navbar .btn-primary:hover {
+  background-color: #c79565 !important;
+}
+
+/* .navbar {
   background-color: var(--bg-main) !important;
 }
 
@@ -39,7 +68,7 @@ body {
 
 .btn-primary:hover {
   background-color: #7e968a !important;
-}
+} */
 
 /* Carousel */
 .carousel-caption {
@@ -221,3 +250,22 @@ body {
   animation: wiggle 0.8s ease-in-out;
 }
 
+/* ===== About section clean containers (NOT cards) ===== */
+./* ===== About section: clean text blocks (NO card, NO shadow) ===== */
+.about-card {
+  background: transparent;
+  padding: 0;          /* no boxed feeling */
+  margin-bottom: 24px;
+}
+
+.about-card-body {
+  background: transparent;
+  padding: 0;
+  color: var(--text-dark);
+}
+
+/* Ensure no hover effects */
+.about-card:hover {
+  animation: none;
+  transform: none;
+}
