@@ -4,6 +4,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg shadow-sm">
       <div className="container">
+        
         <Link className="navbar-brand fw-bold" to="/">
           LonoSpace
         </Link>
