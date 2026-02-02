@@ -18,7 +18,7 @@ function About() {
       </div>
 
       {/* ===== MISSION & VISION ===== */}
-      <div className="section-accent py-5">
+      <div className="section-light py-5">
         <div className="container">
           <div className="row text-center">
             <div className="col-md-6 mb-4">
@@ -55,9 +55,7 @@ function About() {
         <div className="container">
           <div className="text-center mb-4">
             <h3 className="section-title">Who is LonoSpace for?</h3>
-            <p className="text-muted">
-              Designed for learners at every stage.
-            </p>
+            
           </div>
 
           <div className="row text-center">
@@ -98,7 +96,7 @@ function About() {
       </div>
 
         {/* ===== ABOUT THE CREATOR ===== */}
-<div className="section-accent py-5">
+<div className="section-light py-5">
   <div className="container">
     <div className="row justify-content-center">
       <div className="col-md-8 text-center">

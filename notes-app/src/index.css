@@ -269,3 +269,23 @@ body {
   animation: none;
   transform: none;
 }
+/* ===== Contact Form ===== */
+.contact-form .form-control {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.contact-form .form-control:focus {
+  border-color: var(--primary);
+  box-shadow: none;
+}
+/* ===== Contact page Send Message button ===== */
+.contact-form .btn-primary {
+  background-color: var(--accent) !important; /* pink */
+  border: none;
+  color: #ffffff;
+}
+
+.contact-form .btn-primary:hover {
+  background-color: #c79565 !important; /* slightly darker pink */
+}

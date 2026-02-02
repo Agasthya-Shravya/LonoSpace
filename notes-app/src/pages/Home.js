@@ -90,7 +90,7 @@ function Home() {
 
       </div>
 
-     <div className="section-accent py-5">
+     <div className="section-light py-5">
   <div className="container">
         <div className="row text-center">
           <div className="col-md-4 mb-4">
