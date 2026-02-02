@@ -63,19 +63,21 @@ function Login() {
                       </div>
 
                       <div className="mb-3 position-relative">
-                        <label>Password</label>
-                        <input
-                          type={showPassword ? "text" : "password"}
-                          className="form-control"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <span
-                          className="password-toggle"
-                          onClick={() => setShowPassword(!showPassword)}
-                        >
-                          {showPassword ? "Hide" : "Show"}
-                        </span>
+                        
+                            <label>Password</label>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                className="form-control"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <span
+                                className="password-eye"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? "🙈" : "👁️"}
+                            </span>
+                            
                       </div>
 
                       <button className="btn btn-primary w-100 mt-3">

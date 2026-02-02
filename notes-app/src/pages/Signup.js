@@ -1,61 +1,123 @@
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
 function Signup() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!name || !email || !password || !confirmPassword) {
+      setError("All fields are required.");
+      return;
+    }
+
+    if (!email.includes("@")) {
+      setError("Enter a valid email.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    setError("");
+    console.log("Signup data:", { name, email, password });
+  };
+
   return (
     <>
       <Navbar />
 
       <div className="section-light py-5">
         <div className="container">
-          <div className="row justify-content-center align-items-center">
+          <div className="row justify-content-center">
             <div className="col-lg-10">
-
               <div className="login-3d-wrapper">
                 <div className="row g-0">
 
-            
                   <div className="col-md-5 d-none d-md-flex login-left">
                     <div style={{ marginLeft: "20px" }}>
                       <h3>Join LonoSpace</h3>
-                      <p>
-                        Create an account and start your personalized learning journey.
-                      </p>
+                      <p>Create an account and start learning.</p>
                     </div>
                   </div>
 
-                
                   <div className="col-md-6 login-right" style={{ marginLeft: "20px" }}>
                     <h4 className="mb-4">Sign Up</h4>
 
-                    <form>
+                    {error && <p className="text-danger">{error}</p>}
+
+                    <form onSubmit={handleSubmit}>
                       <div className="mb-3">
-                        <label className="form-label">Full Name</label>
+                        <label>Full Name</label>
                         <input
-                          type="text"
                           className="form-control"
-                          placeholder="Enter your name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
                         />
                       </div>
-
                       <div className="mb-3">
-                        <label className="form-label">Email</label>
+                        <label>Email</label>
                         <input
                           type="email"
                           className="form-control"
-                          placeholder="Enter your email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                         />
                       </div>
-
-                      <div className="mb-3">
-                        <label className="form-label">Password</label>
+                      <div className="mb-3 password-wrapper">
+                        
+                        <label>Password</label>
                         <input
-                          type="password"
-                          className="form-control"
-                          placeholder="Create a password"
+                            type={showPassword ? "text" : "password"}
+                            className="form-control"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
-                      </div>
+                        <span
+                            className="password-eye"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? "🙈" : "👁️"}
+                        </span>
+                        </div>
+
+                      <div className="mb-3 password-wrapper">
+                    <label>Confirm Password</label>
+                    <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        className="form-control"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                    <span
+                        className="password-eye"
+                        onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                        }
+                    >
+                        {showConfirmPassword ? "🙈" : "👁️"}
+                    </span>
+                    </div>
+
+                    
+
 
                       <button className="btn btn-primary w-100 mt-3">
                         Create Account
@@ -72,7 +134,6 @@ function Signup() {
 
                 </div>
               </div>
-
             </div>
           </div>
         </div>
