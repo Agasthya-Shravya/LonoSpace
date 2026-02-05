@@ -10,6 +10,8 @@ import Notes from "./admin/Notes";
 import ShortNotes from "./admin/ShortNotes";
 import InterviewPrep from "./admin/InterviewPrep";
 import ManageUsers from "./admin/ManageUsers";
+import AddPdfNote from "./admin/AddPdfNote";
+import AddTextNote from "./admin/AddTextNote";
 function App() {
   return (
     <Router>
@@ -25,6 +27,8 @@ function App() {
         <Route path="/admin/short-notes" element={<ShortNotes />} />
         <Route path="/admin/interview-prep" element={<InterviewPrep />} />
         <Route path="/admin/users" element={<ManageUsers />} />
+        <Route path="/admin/notes/add-pdf" element={<AddPdfNote />} />
+        <Route path="/admin/notes/add-text" element={<AddTextNote />} />
 
       </Routes>
     </Router>

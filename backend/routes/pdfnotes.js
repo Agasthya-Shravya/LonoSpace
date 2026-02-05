@@ -1,0 +1,89 @@
+const express = require("express");
+const router = express.Router();
+const db = require("../db");
+const upload = require("../multer");
+
+
+router.post("/add-pdf", upload.single("pdf"), (req, res) => {
+  try {
+    const { title, description, coverImageUrl } = req.body;
+    const pdf = req.file;
+
+    if (!pdf) {
+      return res.status(400).json({ message: "PDF file is required" });
+    }
+
+    const sql = `
+      INSERT INTO notes
+      (title, description, type, pdf_data, pdf_name, pdf_type, cover_image_url)
+      VALUES (?, ?, 'PDF', ?, ?, ?, ?)
+    `;
+
+    db.query(
+      sql,
+      [
+        title,
+        description,
+        pdf.buffer,          // BLOB
+        pdf.originalname,
+        pdf.mimetype,
+        coverImageUrl
+      ],
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({ message: "DB error" });
+        }
+
+        res.status(201).json({
+          message: "PDF note saved successfully",
+          id: result.insertId
+        });
+      }
+    );
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+router.get("/", (req, res) => {
+  const sql = `
+    SELECT id, title, description, type, cover_image_url
+    FROM notes
+    ORDER BY created_at DESC
+  `;
+
+  db.query(sql, (err, rows) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: "DB error" });
+    }
+    res.json(rows);
+  });
+});
+
+
+router.delete("/:id", (req, res) => {
+  const noteId = req.params.id;
+
+  console.log("DELETE hit for ID:", noteId);
+
+  const sql = "DELETE FROM notes WHERE id = ?";
+
+  db.query(sql, [noteId], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: "DB error" });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Note not found" });
+    }
+
+    res.json({ message: "Note deleted successfully" });
+  });
+});
+
+module.exports = router;

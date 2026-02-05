@@ -12,9 +12,10 @@ function AdminDashboard() {
         <div className="container">
 
         <br></br>
-            <h3 className="mb-1">
+        
+            <h3 className="mb-1 text-center">
               Welcome back, <span style={{ color: "#d6a77a" }}>Admin</span> 👋
-            </h3>
+            </h3><br/>
             <p className="text-muted mb-0">
                You have full access to manage users and learning content.
             </p>

@@ -6,6 +6,11 @@
   --text-dark: #3e3e3e;
   --text-light: #ffffff;
 }
+.admin-notes-page {
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  padding-top: 1rem;
+}
 
 body {
   margin: 0;

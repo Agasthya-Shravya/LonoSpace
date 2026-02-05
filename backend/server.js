@@ -3,15 +3,17 @@ const cors = require("cors");
 require("dotenv").config();
 
 const authRoutes = require("./routes/auth");
-
+const textNotesRoutes = require("./routes/textnotes");
+const adminNotesRoutes = require("./routes/pdfnotes");
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/admin/notes", adminNotesRoutes);
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+app.use("/api/admin/text-notes", textNotesRoutes);
