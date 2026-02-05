@@ -6,6 +6,7 @@ const authRoutes = require("./routes/auth");
 const textNotesRoutes = require("./routes/textnotes");
 const adminNotesRoutes = require("./routes/pdfnotes");
 const app = express();
+const shortNotesRoutes = require("./routes/shortnotes");
 
 app.use(cors());
 app.use(express.json());
@@ -17,3 +18,4 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 app.use("/api/admin/text-notes", textNotesRoutes);
+app.use("/api/admin/short-notes", shortNotesRoutes);

@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import AdminNavbar from "./AdminNavbar";
 import Footer from "./AdminFooter";
 
@@ -21,11 +19,9 @@ export default function AddTextNote() {
       return;
     }
 
-    const res = await fetch("http://localhost:5000/api/admin/add-text", {
+    const res = await fetch("http://localhost:5000/api/admin/text-notes", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         title,
         description,
@@ -45,8 +41,8 @@ export default function AddTextNote() {
   return (
     <>
       <AdminNavbar />
-
-      <div className="container mt-4 mb-5">
+<div className="admin-notes-page">
+      <div className=" container mt-4 mb-5">
         <h3 className="text-center mb-4">Add Text Note</h3>
 
         <form onSubmit={handleSubmit}>
@@ -55,6 +51,7 @@ export default function AddTextNote() {
             <input
               className="form-control"
               value={title}
+              placeholder="Notes title.."
               onChange={(e) => setTitle(e.target.value)}
               required
             />
@@ -65,27 +62,31 @@ export default function AddTextNote() {
             <textarea
               className="form-control"
               rows="2"
+              placeholder="Write a short description.."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
 
           <div className="mb-3">
-            <label className="form-label">Cover Image URL (optional)</label>
+            <label className="form-label">Cover Image URL</label>
             <input
               className="form-control"
               value={coverImageUrl}
+              placeholder="Give the cover image address.."
               onChange={(e) => setCoverImageUrl(e.target.value)}
             />
           </div>
 
-          <div className="mb-3">
+          <div className="mb-4">
             <label className="form-label">Content</label>
-            <ReactQuill
-              theme="snow"
+            <textarea
+              className="form-control"
+              rows="12"
+              placeholder="Write your note here..."
               value={content}
-              onChange={setContent}
-              style={{ height: "300px", marginBottom: "60px" }}
+              onChange={(e) => setContent(e.target.value)}
+              required
             />
           </div>
 
@@ -94,6 +95,7 @@ export default function AddTextNote() {
       </div>
 
       <Footer />
+      </div>
     </>
   );
 }
