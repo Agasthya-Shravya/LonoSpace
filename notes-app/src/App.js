@@ -13,6 +13,7 @@ import ManageUsers from "./admin/ManageUsers";
 import AddPdfNote from "./admin/AddPdfNote";
 import AddTextNote from "./admin/AddTextNote";
 import AddShortNote from "./admin/AddShortNote";
+import AddInterviewSubject from "./admin/AddInterviewSubject";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
         <Route path="/admin/notes/add-pdf" element={<AddPdfNote />} />
         <Route path="/admin/notes/add-text" element={<AddTextNote />} />
         <Route path="/admin/short-notes/add" element={<AddShortNote />} />
+        <Route path="/admin/interview-prep/add-subject" element={<AddInterviewSubject />}
+/>
       </Routes>
     </Router>
   );

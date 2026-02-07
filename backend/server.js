@@ -7,6 +7,8 @@ const textNotesRoutes = require("./routes/textnotes");
 const adminNotesRoutes = require("./routes/pdfnotes");
 const app = express();
 const shortNotesRoutes = require("./routes/shortnotes");
+const interviewSubjectsRoutes = require("./routes/interviewSubjects");
+const interviewQuestionsRoutes = require("./routes/interviewQuestions");
 
 app.use(cors());
 app.use(express.json());
@@ -19,3 +21,5 @@ app.listen(PORT, () => {
 });
 app.use("/api/admin/text-notes", textNotesRoutes);
 app.use("/api/admin/short-notes", shortNotesRoutes);
+app.use("/api/admin/interview/subjects", interviewSubjectsRoutes);
+app.use("/api/admin/interview/questions", interviewQuestionsRoutes);
