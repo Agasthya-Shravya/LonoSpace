@@ -85,5 +85,59 @@ router.delete("/:id", (req, res) => {
     res.json({ message: "Note deleted successfully" });
   });
 });
+router.get("/view/:id", (req, res) => {
+  const { id } = req.params;
+
+  const sql = `
+    SELECT pdf_data, pdf_name
+    FROM notes
+    WHERE id = ? AND type = 'PDF'
+  `;
+
+  db.query(sql, [id], (err, rows) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("DB error");
+    }
+
+    if (rows.length === 0) {
+      return res.status(404).send("PDF not found");
+    }
+
+    const pdfBuffer = rows[0].pdf_data;
+
+    res.writeHead(200, {
+      "Content-Type": "application/pdf",
+      "Content-Disposition": "inline",
+      "Content-Length": pdfBuffer.length,
+      "Accept-Ranges": "bytes"
+    });
+
+    res.end(pdfBuffer);
+  });
+});
+/**
+ * GET TEXT NOTE
+ * GET /api/admin/notes/text/:id
+ */
+router.get("/text/:id", (req, res) => {
+  const { id } = req.params;
+
+  db.query(
+    `
+    SELECT title, description, content
+    FROM notes
+    WHERE id = ? AND type = 'TEXT'
+    `,
+    [id],
+    (err, rows) => {
+      if (err) return res.status(500).json({ message: "DB error" });
+      if (rows.length === 0)
+        return res.status(404).json({ message: "Note not found" });
+
+      res.json(rows[0]);
+    }
+  );
+});
 
 module.exports = router;

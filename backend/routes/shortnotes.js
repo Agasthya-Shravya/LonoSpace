@@ -81,5 +81,33 @@ router.delete("/:id", (req, res) => {
     }
   );
 });
+/**
+ * GET SHORT NOTE
+ * GET /api/admin/short-notes/:id
+ */
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+
+  db.query(
+    `
+    SELECT title, description, content
+    FROM short_notes
+    WHERE id = ?
+    `,
+    [id],
+    (err, rows) => {
+      if (err) {
+        console.error("GET SHORT NOTE ERROR:", err);
+        return res.status(500).json({ message: "DB error" });
+      }
+
+      if (rows.length === 0) {
+        return res.status(404).json({ message: "Short note not found" });
+      }
+
+      res.json(rows[0]);
+    }
+  );
+});
 
 module.exports = router;

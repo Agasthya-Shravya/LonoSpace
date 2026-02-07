@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-
+const interviewPrepRoutes = require("./routes/interviewprep");
 const authRoutes = require("./routes/auth");
 const textNotesRoutes = require("./routes/textnotes");
 const adminNotesRoutes = require("./routes/pdfnotes");
@@ -25,3 +25,4 @@ app.use("/api/admin/short-notes", shortNotesRoutes);
 app.use("/api/admin/interview/subjects", interviewSubjectsRoutes);
 app.use("/api/admin/interview/questions", interviewQuestionsRoutes);
 app.use("/api/admin/users", usersRoutes);
+app.use("/api/admin/interview", interviewPrepRoutes);

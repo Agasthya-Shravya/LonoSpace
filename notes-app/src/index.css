@@ -10,7 +10,9 @@
   min-height: 100vh;
   background-color: var(--bg-main);
   padding-top: 1rem;
+  padding-bottom: 1rem;
 }
+
 
 body {
   margin: 0;

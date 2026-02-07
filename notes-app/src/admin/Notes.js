@@ -104,6 +104,22 @@ export default function Notes() {
                       {note.type || "NOTE"}
                     </span>
 
+                    <div className="d-flex gap-2">
+                    <button
+                      className="btn btn-sm btn-primary"
+                      onClick={() => {
+                        if (note.type === "PDF") {
+                          navigate(`/admin/notes/view/${note.id}`);
+                        } else if (note.type === "TEXT") {
+                          navigate(`/admin/notes/text/${note.id}`);
+                        }
+                      }}
+                    >
+                      View
+                    </button>
+
+
+
                     <button
                       className="btn btn-sm btn-danger"
                       onClick={() => deleteNote(note.id)}
@@ -111,7 +127,7 @@ export default function Notes() {
                       Delete
                     </button>
                   </div>
-
+                    </div>
                 </div>
               </div>
             ))}

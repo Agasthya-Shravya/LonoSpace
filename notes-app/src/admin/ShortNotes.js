@@ -75,7 +75,16 @@ export default function ShortNotes() {
                   </div>
 
                   <div className="card-footer d-flex justify-content-between">
-                    <span className="badge bg-info">SHORT</span>
+                    <span className="badge bg-secondary">SHORT</span>
+                    <div className="d-flex gap-2">
+                    <button
+                    className="btn btn-sm btn-primary"
+                    onClick={() =>
+                      navigate(`/admin/short-notes/view/${note.id}`)
+                    }
+                  >
+                    View
+                  </button>
 
                     <button
                       className="btn btn-sm btn-danger"
@@ -84,7 +93,7 @@ export default function ShortNotes() {
                       Delete
                     </button>
                   </div>
-
+                  </div>
                 </div>
               </div>
             ))}

@@ -58,9 +58,6 @@ export default function InterviewPrep() {
                   <div
                     className="card-body"
                     style={{ cursor: "pointer" }}
-                    onClick={() =>
-                      navigate(`/admin/interview-prep/${sub.id}`)
-                    }
                   >
                     <h5>{sub.name}</h5>
                     <p className="text-muted small">
@@ -68,7 +65,16 @@ export default function InterviewPrep() {
                     </p>
                   </div>
 
-                  <div className="card-footer text-end">
+                  <div className="card-footer text-end d-flex gap-2">
+                    <button
+                      className="btn btn-sm btn-primary"
+                      onClick={() =>
+                        navigate(`/admin/interview-prep/${sub.id}`)
+                      }
+                    >
+                      View
+                    </button>
+
                     <button
                       className="btn btn-sm btn-danger"
                       onClick={() => deleteSubject(sub.id)}
