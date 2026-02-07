@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import Footer from "../admin/AdminFooter";
 import { Link } from "react-router-dom";
+import RecentlyViewed from "./RecentlyViewed";
 
 function Dashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -30,7 +31,7 @@ function Dashboard() {
               <p className="text-muted">
                 Access all subject-wise detailed notes.
               </p>
-              <Link to="/learner/notes" className="lonospace-btn">
+              <Link to="/learner/notes" className="lonospace-btn" style={{backgroundColor:"#d6a77a"}}>
                 View Notes
               </Link>
             </div>
@@ -42,7 +43,7 @@ function Dashboard() {
               <p className="text-muted">
                 Quick revisions & last-minute prep.
               </p>
-              <Link to="/learner/short-notes" className="lonospace-btn">
+              <Link to="/learner/short-notes" className="lonospace-btn" style={{backgroundColor:"#d6a77a"}}>
                 Open Short Notes
               </Link>
             </div>
@@ -54,14 +55,16 @@ function Dashboard() {
               <p className="text-muted">
                 Questions, tips, and practice material.
               </p>
-              <Link to="/learner/interview-prep" className="lonospace-btn">
+              <Link to="/learner/interview-prep" className="lonospace-btn"style={{backgroundColor:"#d6a77a"}}>
                 Start Preparing
               </Link>
             </div>
           </div>
-
         </div>
+      <RecentlyViewed />
       </div>
+      
+
 </div>
       <Footer />
     </>

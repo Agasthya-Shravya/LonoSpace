@@ -455,7 +455,7 @@ body {
   background-color: var(--bg-main);
   color: var(--text-dark);
   padding: 6px 16px;
-  border-radius: 20px;
+  border-radius: 10px;
   border: none;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -471,7 +471,6 @@ body {
   margin-left: 0.5rem;
 }
 
-/* Admin dashboard full background */
 .admin-dashboard {
   min-height: 100vh;
   background-color: var(--bg-main);
@@ -493,4 +492,44 @@ body {
 
 .dashboard-card-icon {
   font-size: 36px;
+}
+
+.recent-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  height: 100%;
+}
+
+.small-link {
+  text-decoration: none;
+  font-weight: 500;
+}
+.empty-recent {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+.search-input {
+  max-width: 260px;
+  border-radius: 12px;
+}
+
+.note-card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 16px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.note-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
 }
