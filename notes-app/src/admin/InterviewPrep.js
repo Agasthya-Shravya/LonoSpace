@@ -10,14 +10,11 @@ export default function InterviewPrep() {
   useEffect(() => {
     fetch("http://localhost:5000/api/admin/interview/subjects")
       .then(res => res.json())
-      .then(setSubjects)
-      .catch(err => console.error(err));
+      .then(setSubjects);
   }, []);
 
   const deleteSubject = async (id) => {
-    if (!window.confirm("Delete this subject? All questions will be deleted.")) {
-      return;
-    }
+    if (!window.confirm("Delete subject and all questions?")) return;
 
     const res = await fetch(
       `http://localhost:5000/api/admin/interview/subjects/${id}`,
@@ -26,8 +23,6 @@ export default function InterviewPrep() {
 
     if (res.ok) {
       setSubjects(prev => prev.filter(s => s.id !== id));
-    } else {
-      alert("Delete failed");
     }
   };
 
@@ -38,7 +33,6 @@ export default function InterviewPrep() {
       <div className="admin-notes-page">
         <div className="container mt-4">
 
-          {/* Header + Add button */}
           <div className="d-flex justify-content-between align-items-center mb-4">
             <h3>Interview Prep</h3>
 
@@ -51,39 +45,33 @@ export default function InterviewPrep() {
             </button>
           </div>
 
-          {/* Subjects grid */}
           <div className="row">
             {subjects.length === 0 && (
               <p className="text-muted text-center">
-                No subjects added yet
+                No notes available
               </p>
             )}
-
-            {subjects.map(subject => (
-              <div key={subject.id} className="col-md-4 mb-3">
+            {subjects.map(sub => (
+              <div key={sub.id} className="col-md-4 mb-3">
                 <div className="card h-100">
 
                   <div
                     className="card-body"
                     style={{ cursor: "pointer" }}
                     onClick={() =>
-                      navigate(`/admin/interview-prep/${subject.id}`)
+                      navigate(`/admin/interview-prep/${sub.id}`)
                     }
                   >
-                    <h5>{subject.name}</h5>
+                    <h5>{sub.name}</h5>
                     <p className="text-muted small">
-                      {subject.description}
+                      {sub.description}
                     </p>
                   </div>
 
-                  <div className="card-footer d-flex justify-content-between">
-                    <span className="badge bg-warning text-dark">
-                      SUBJECT
-                    </span>
-
+                  <div className="card-footer text-end">
                     <button
                       className="btn btn-sm btn-danger"
-                      onClick={() => deleteSubject(subject.id)}
+                      onClick={() => deleteSubject(sub.id)}
                     >
                       Delete
                     </button>

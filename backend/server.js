@@ -9,6 +9,7 @@ const app = express();
 const shortNotesRoutes = require("./routes/shortnotes");
 const interviewSubjectsRoutes = require("./routes/interviewSubjects");
 const interviewQuestionsRoutes = require("./routes/interviewQuestions");
+const usersRoutes = require("./routes/users");
 
 app.use(cors());
 app.use(express.json());
@@ -23,3 +24,4 @@ app.use("/api/admin/text-notes", textNotesRoutes);
 app.use("/api/admin/short-notes", shortNotesRoutes);
 app.use("/api/admin/interview/subjects", interviewSubjectsRoutes);
 app.use("/api/admin/interview/questions", interviewQuestionsRoutes);
+app.use("/api/admin/users", usersRoutes);

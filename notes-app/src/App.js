@@ -14,7 +14,8 @@ import AddPdfNote from "./admin/AddPdfNote";
 import AddTextNote from "./admin/AddTextNote";
 import AddShortNote from "./admin/AddShortNote";
 import AddInterviewSubject from "./admin/AddInterviewSubject";
-
+import InterviewQuestions from "./admin/InterviewQuestions";
+import AddInterviewQuestion from "./admin/AddInterviewQuestion";
 function App() {
   return (
     <Router>
@@ -33,8 +34,9 @@ function App() {
         <Route path="/admin/notes/add-pdf" element={<AddPdfNote />} />
         <Route path="/admin/notes/add-text" element={<AddTextNote />} />
         <Route path="/admin/short-notes/add" element={<AddShortNote />} />
-        <Route path="/admin/interview-prep/add-subject" element={<AddInterviewSubject />}
-/>
+        <Route path="/admin/interview-prep/add-subject" element={<AddInterviewSubject />}/>
+        <Route path="/admin/interview-prep/:subjectId"  element={<InterviewQuestions />}/>
+        <Route path="/admin/interview-prep/:subjectId/add-question" element={<AddInterviewQuestion />}/>
       </Routes>
     </Router>
   );
