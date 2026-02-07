@@ -5,7 +5,7 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AdminDashboard from "./admin/AdminDashboard";
-import LearnerDashboard from "./pages/LearnerDashboard";
+import LearnerDashboard from "./learner/Dashboard";
 import Notes from "./admin/Notes";
 import ShortNotes from "./admin/ShortNotes";
 import InterviewPrep from "./admin/InterviewPrep";
