@@ -7,8 +7,8 @@ const textNotesRoutes = require("./routes/textnotes");
 const adminNotesRoutes = require("./routes/pdfnotes");
 const app = express();
 const shortNotesRoutes = require("./routes/shortnotes");
-const interviewSubjectsRoutes = require("./routes/interviewSubjects");
-const interviewQuestionsRoutes = require("./routes/interviewQuestions");
+const interviewSubjectsRoutes = require("./routes/interviewsubjects");
+const interviewQuestionsRoutes = require("./routes/interviewquestions");
 const usersRoutes = require("./routes/users");
 
 app.use(cors());
