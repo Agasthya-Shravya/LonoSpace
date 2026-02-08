@@ -19,7 +19,7 @@ import AddInterviewQuestion from "./admin/AddInterviewQuestion";
 import ViewPdf from "./admin/ViewPdf";
 import ViewTextNote from "./admin/ViewTextNote";
 import ViewInterviewPrep from "./admin/ViewInterviewPrep";
-
+import LearnerNotes from "./learner/LearnerNotes";
 function App() {
   return (
     <Router>
@@ -41,11 +41,13 @@ function App() {
         <Route path="/admin/interview-prep/add-subject" element={<AddInterviewSubject />}/>
         <Route path="/admin/interview-prep/:subjectId"  element={<InterviewQuestions />}/>
         <Route path="/admin/interview-prep/:subjectId/add-question" element={<AddInterviewQuestion />}/>
-        <Route path="/admin/notes/view/:id" element={<ViewPdf />}/>
-        <Route path="/admin/notes/text/:id" element={<ViewTextNote />}/>        
+        <Route path="/admin/notes/view/:id" element={<ViewPdf role="admin"/>}/>
+        <Route path="/notes/view/:id" element={<ViewPdf role="learner"/>}/>        
+        <Route path="/admin/notes/text/:id" element={<ViewTextNote role="admin"/>}/>
+        <Route path="/notes/text/:id" element={<ViewTextNote role="learner"/>}/>        
         <Route path="/admin/short-notes/view/:id" element={<ViewTextNote />}/>
         <Route path="/admin/interview-prep/view/:subjectId" element={<ViewInterviewPrep />}/>
-
+        <Route path="/learner/notes" element={<LearnerNotes />} />
       </Routes>
     </Router>
   );

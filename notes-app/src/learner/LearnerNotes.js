@@ -2,32 +2,50 @@ import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "../admin/AdminFooter";
 import { addRecentlyViewed } from "../utils/recentlyViewed";
+import { isFavourite, toggleFavourite } from "../utils/favourites";
+import { useNavigate } from "react-router-dom";
 
 function LearnerNotes() {
   const [notes, setNotes] = useState([]);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // replace with your actual API
     fetch("http://localhost:5000/api/notes")
       .then(res => res.json())
-      .then(data => setNotes(data));
+      .then(data => setNotes(data.notes || []))
+      .catch(err => console.error(err));
   }, []);
 
   const filteredNotes = notes.filter(note =>
-    note.title.toLowerCase().includes(search.toLowerCase())
+    (note.title || "")
+      .toLowerCase()
+      .includes(search.toLowerCase())
   );
 
-  const openNote = (note) => {
-    addRecentlyViewed({
-      id: note.id,
-      title: note.title,
-      type: "Notes",
-      link: note.fileUrl   // or /learner/notes/:id
-    });
+  const openNote = async (note) => {
+  // increment views
+  await fetch(
+    `http://localhost:5000/api/notes/${note.id}/view`,
+    { method: "PUT" }
+  );
 
-    window.open(note.fileUrl, "_blank");
-  };
+  addRecentlyViewed({
+    id: note.id,
+    title: note.title,
+    type: note.type,
+    link:
+      note.type === "PDF"
+        ? `/notes/view/${note.id}`
+        : `/notes/text/${note.id}`
+  });
+
+  if (note.type === "PDF") {
+    navigate(`/notes/view/${note.id}`);
+  } else {
+    navigate(`/notes/text/${note.id}`);
+  }
+};
 
   return (
     <>
@@ -49,7 +67,7 @@ function LearnerNotes() {
             />
           </div>
 
-          {/* Notes Grid */}
+          {/* Notes */}
           <div className="row g-4">
             {filteredNotes.length === 0 ? (
               <p className="text-muted">No notes found</p>
@@ -57,18 +75,42 @@ function LearnerNotes() {
               filteredNotes.map(note => (
                 <div key={note.id} className="col-md-4">
                   <div className="note-card shadow-sm">
-                    <h6 className="fw-bold">{note.title}</h6>
+
+                    {note.cover_image_url && (
+                      <img
+                        src={note.cover_image_url}
+                        alt="cover"
+                        className="note-cover"
+                      />
+                    )}
+
+                    <div className="d-flex justify-content-between mt-2">
+                      <h6 className="fw-bold">{note.title}</h6>
+
+                      <span
+                        className="bookmark-icon"
+                        onClick={() => toggleFavourite(note)}
+                      >
+                        {isFavourite(note.id) ? "⭐" : "☆"}
+                      </span>
+                    </div>
 
                     <p className="text-muted small">
-                      {note.subject || "General"}
+                      {note.description || "No description"}
+                    </p>
+
+                    <p className="text-muted small">
+                      👁️ {note.view_count || 0} views
                     </p>
 
                     <button
-                      className="lonospace-btn"
+                      className="lonospace-btn mt-2"
                       onClick={() => openNote(note)}
+                      style={{backgroundColor:"#d6a77a"}}
                     >
-                      Open Note
+                      Open {note.type}
                     </button>
+
                   </div>
                 </div>
               ))

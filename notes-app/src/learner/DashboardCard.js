@@ -9,7 +9,7 @@ function DashboardCard({ title, description, buttonText, link, icon }) {
         {description}
       </p>
 
-      <a href={link} className="lonospace-btn">
+      <a href={link} className="lonospace-btn" style={{backgroundColor:"#d6a77a"}}>
         {buttonText}
       </a>
     </div>

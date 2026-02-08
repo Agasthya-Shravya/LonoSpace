@@ -10,6 +10,8 @@ const shortNotesRoutes = require("./routes/shortnotes");
 const interviewSubjectsRoutes = require("./routes/interviewsubjects");
 const interviewQuestionsRoutes = require("./routes/interviewquestions");
 const usersRoutes = require("./routes/users");
+const learnerNotesRoutes = require("./routes/learnernotes");
+
 
 app.use(cors());
 app.use(express.json());
@@ -26,3 +28,4 @@ app.use("/api/admin/interview/subjects", interviewSubjectsRoutes);
 app.use("/api/admin/interview/questions", interviewQuestionsRoutes);
 app.use("/api/admin/users", usersRoutes);
 app.use("/api/admin/interview", interviewPrepRoutes);
+app.use("/api", learnerNotesRoutes);

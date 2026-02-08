@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <footer className="footer-section">
@@ -15,11 +17,11 @@ function Footer() {
           <div className="col-md-6 mb-3">
             <h6 className="footer-title">Quick Links</h6>
             <ul className="footer-links">
-              <li>Home</li>
-              <li>About</li>
-              <li>Contact</li>
-              <li>Login</li>
-              <li>Sign Up</li>
+               <Link to="/" style={{color:"#f8f0e3"}}>Home</Link><br/>
+               <Link to="/about" style={{color:"#f8f0e3"}}>About</Link><br/>
+               <Link to="/contact" style={{color:"#f8f0e3"}}>Contact</Link><br/>
+               <Link to="/login" style={{color:"#f8f0e3"}}>Login</Link><br/>
+               <Link to="/signup" style={{color:"#f8f0e3"}}>Signup</Link><br/>
             </ul>
           </div>
 
