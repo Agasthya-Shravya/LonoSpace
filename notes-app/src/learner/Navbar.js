@@ -57,8 +57,8 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link lonospace-link" to="/learner/bookmarks">
-                Bookmarks
+              <Link className="nav-link lonospace-link" to="/notesrequest">
+                NotesRequest
               </Link>
             </li>
             <li className="nav-item">

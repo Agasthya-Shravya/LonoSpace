@@ -22,7 +22,8 @@ import ViewInterviewPrep from "./admin/ViewInterviewPrep";
 import LearnerNotes from "./learner/LearnerNotes";
 import LearnerShortNotes from "./learner/LearnerShortNotes";
 import LearnerInterviewDashboard from "./learner/LearnerInterviewPrep";
-import LearnerInterviewFlipCards from "./learner/LearnerInterviewFlipCards"
+import LearnerInterviewFlipCards from "./learner/LearnerInterviewFlipCards";
+import NotesRequest from "./learner/NotesRequest";
 function App() {
   return (
     <Router>
@@ -56,6 +57,7 @@ function App() {
         <Route path="/learner/short-notes" element={<LearnerShortNotes/>}/>
         <Route path="/learner/interview-prep" element={<LearnerInterviewDashboard/>}/>
         <Route path="/learner/interview-prep/:subjectId" element={<LearnerInterviewFlipCards />}/>
+        <Route path="/notesrequest" element={<NotesRequest/>}/>
       </Routes>
     </Router>
   );
