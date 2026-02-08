@@ -20,6 +20,9 @@ import ViewPdf from "./admin/ViewPdf";
 import ViewTextNote from "./admin/ViewTextNote";
 import ViewInterviewPrep from "./admin/ViewInterviewPrep";
 import LearnerNotes from "./learner/LearnerNotes";
+import LearnerShortNotes from "./learner/LearnerShortNotes";
+import LearnerInterviewDashboard from "./learner/LearnerInterviewPrep";
+import LearnerInterviewFlipCards from "./learner/LearnerInterviewFlipCards"
 function App() {
   return (
     <Router>
@@ -39,15 +42,20 @@ function App() {
         <Route path="/admin/notes/add-text" element={<AddTextNote />} />
         <Route path="/admin/short-notes/add" element={<AddShortNote />} />
         <Route path="/admin/interview-prep/add-subject" element={<AddInterviewSubject />}/>
-        <Route path="/admin/interview-prep/:subjectId"  element={<InterviewQuestions />}/>
+        <Route path="/admin/interview-prep/:subjectId"  element={<InterviewQuestions role="admin"/>}/>
+        <Route path="/interview-prep/:subjectId"  element={<InterviewQuestions role="learner" />}/>
         <Route path="/admin/interview-prep/:subjectId/add-question" element={<AddInterviewQuestion />}/>
         <Route path="/admin/notes/view/:id" element={<ViewPdf role="admin"/>}/>
         <Route path="/notes/view/:id" element={<ViewPdf role="learner"/>}/>        
         <Route path="/admin/notes/text/:id" element={<ViewTextNote role="admin"/>}/>
         <Route path="/notes/text/:id" element={<ViewTextNote role="learner"/>}/>        
-        <Route path="/admin/short-notes/view/:id" element={<ViewTextNote />}/>
+        <Route path="/admin/short-notes/view/:id" element={<ViewTextNote role="admin"/>}/>
+        <Route path="/short-notes/view/:id" element={<ViewTextNote role="learner"/>}/>
         <Route path="/admin/interview-prep/view/:subjectId" element={<ViewInterviewPrep />}/>
         <Route path="/learner/notes" element={<LearnerNotes />} />
+        <Route path="/learner/short-notes" element={<LearnerShortNotes/>}/>
+        <Route path="/learner/interview-prep" element={<LearnerInterviewDashboard/>}/>
+        <Route path="/learner/interview-prep/:subjectId" element={<LearnerInterviewFlipCards />}/>
       </Routes>
     </Router>
   );

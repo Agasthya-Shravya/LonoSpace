@@ -547,3 +547,87 @@ body {
   display: block;         /* removes inline overflow issues */
 }
 
+.short-note-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  height: 100%;
+}
+
+.short-note-card p {
+  line-height: 1.5;
+}
+
+/* .flip-card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  min-height: 220px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  padding: 18px;
+  border-radius: 14px;
+  backface-visibility: hidden;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.flip-card-front {
+  border-left: 4px solid #d6a77a;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  border-left: 4px solid #d6a77a;
+} */
+
+.flip-card {
+  perspective: 1000px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.flip-card-inner {
+  position: relative;
+  min-height: 220px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  padding: 18px;
+  border-radius: 14px;
+  backface-visibility: hidden;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.flip-card-front {
+  border-left: 4px solid #d6a77a;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+    border-left: 4px solid #d6a77a;
+
+}

@@ -4,13 +4,14 @@ import Footer from "../admin/AdminFooter";
 import { addRecentlyViewed } from "../utils/recentlyViewed";
 import { useNavigate } from "react-router-dom";
 
-function LearnerNotes() {
+function LearnerShortNotes() {
   const [notes, setNotes] = useState([]);
   const [search, setSearch] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/notes")
+    fetch("http://localhost:5000/api/short-notes")
       .then(res => res.json())
       .then(data => setNotes(data.notes || []))
       .catch(err => console.error(err));
@@ -23,28 +24,20 @@ function LearnerNotes() {
   );
 
   const openNote = async (note) => {
-  // increment views
-  await fetch(
-    `http://localhost:5000/api/notes/${note.id}/view`,
-    { method: "PUT" }
-  );
+    await fetch(
+      `http://localhost:5000/api/short-notes/${note.id}/view`,
+      { method: "PUT" }
+    );
 
-  addRecentlyViewed({
-    id: note.id,
-    title: note.title,
-    type: note.type,
-    link:
-      note.type === "PDF"
-        ? `/notes/view/${note.id}`
-        : `/notes/text/${note.id}`
-  });
+    addRecentlyViewed({
+      id: note.id,
+      title: note.title,
+      type: "SHORT_NOTE",
+      link: `/short-notes/view/${note.id}`
+    });
 
-  if (note.type === "PDF") {
-    navigate(`/notes/view/${note.id}`);
-  } else {
-    navigate(`/notes/text/${note.id}`);
-  }
-};
+    navigate(`/short-notes/view/${note.id}`);
+  };
 
   return (
     <>
@@ -55,38 +48,39 @@ function LearnerNotes() {
 
           {/* Header */}
           <div className="d-flex justify-content-between align-items-center mb-4">
-            <h3 className="fw-bold">Notes</h3>
+            <h3 className="fw-bold">Short Notes</h3>
 
             <input
               type="text"
               className="form-control search-input"
-              placeholder="Search notes..."
+              placeholder="Search short notes..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-
+            
           {/* Notes */}
           <div className="row g-4">
             {filteredNotes.length === 0 ? (
-              <p className="text-muted text-center">No notes found</p>
+              <p className="text-muted text-center">No short notes found</p>
             ) : (
               filteredNotes.map(note => (
                 <div key={note.id} className="col-md-4">
                   <div className="note-card shadow-sm">
+                    <img
+                    src={
+                      note.cover_image_url ||
+                      "https://via.placeholder.com/400x200?text=Short+Note"
+                    }
+                    className="card-img-top"
+                    alt={note.title}
+                  />
 
-                    {note.cover_image_url && (
-                      <img
-                        src={note.cover_image_url}
-                        alt="cover"
-                        className="note-cover"
-                      />
-                    )}
 
                     <div className="d-flex justify-content-between mt-2">
                       <h6 className="fw-bold">{note.title}</h6>
 
-                   </div>
+                    </div>
 
                     <p className="text-muted small">
                       {note.description || "No description"}
@@ -99,9 +93,9 @@ function LearnerNotes() {
                     <button
                       className="lonospace-btn mt-2"
                       onClick={() => openNote(note)}
-                      style={{backgroundColor:"#d6a77a"}}
+                      style={{ backgroundColor: "#d6a77a" }}
                     >
-                      Open {note.type}
+                      Open
                     </button>
 
                   </div>
@@ -118,4 +112,4 @@ function LearnerNotes() {
   );
 }
 
-export default LearnerNotes;
+export default LearnerShortNotes;
